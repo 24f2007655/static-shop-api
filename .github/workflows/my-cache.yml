@@ -1,14 +1,14 @@
-name: Cache Task Workflow
-on: [push, workflow_dispatch]
+name: Cache Task
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Create dummy file for caching
+      - name: Create dummy file
         run: |
           mkdir -p my-cache-dir
-          echo "Caching this content" > my-cache-dir/content.txt
+          echo "content" > my-cache-dir/file.txt
       - name: Setup Cache
         id: cache-step
         uses: actions/cache@v4

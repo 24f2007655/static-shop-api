@@ -1,19 +1,20 @@
-name: Cache Task
+name: Cache Solution
 on: push
 jobs:
-  build:
+  build-cache:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup Cache
         id: cache-step
         uses: actions/cache@v4
         with:
           path: my-cache-dir
           key: cache-0ca11d7
+          
       - name: Create dummy file
-        run: |
-          mkdir -p my-cache-dir
-          echo "content" > my-cache-dir/content.txt
+        run: mkdir -p my-cache-dir && echo "content" > my-cache-dir/file.txt
+        
       - name: prime-cache-0ca11d7
-        run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
+        run: echo "Cache hit status ${{ steps.cache-step.outputs.cache-hit }}"

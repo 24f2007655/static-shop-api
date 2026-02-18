@@ -11,7 +11,7 @@ jobs:
           echo "content" > my-cache-dir/file.txt
       - name: Setup Cache
         id: cache-step
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: my-cache-dir
           key: cache-0ca11d7
